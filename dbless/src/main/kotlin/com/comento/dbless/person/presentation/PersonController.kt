@@ -18,10 +18,13 @@ class PersonController(
     @PostMapping("/sort")
     fun sortPersons(@RequestBody sortRequestDto: SortRequestDto): List<Person> {
         try {
-            return personService.sortPersons(sortRequestDto.persons, sortRequestDto.sortBy, sortRequestDto.sortOrder)
+            val (persons, sortBy, sortOrder) = sortRequestDto
+
+            personService.validatePersons(persons)
+
+            return personService.sortPersons(persons, sortBy, sortOrder)
         } catch (e: IllegalArgumentException) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message)
         }
     }
-
 }
