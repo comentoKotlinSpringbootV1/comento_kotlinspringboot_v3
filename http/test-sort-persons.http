@@ -1,0 +1,76 @@
+### 1. Success Request
+POST http://localhost:8080/api/v1/persons/sort HTTP/1.1
+Content-Type: application/json
+
+{
+    "persons": [
+        {
+            "age": 25,
+            "height": 170,
+            "id": "ID1234",
+            "name": "Alice"
+        },
+        {
+            "age": 30,
+            "height": 180,
+            "id": "ID5678",
+            "name": "Bob"
+        },
+        {
+            "age": 20,
+            "height": 160,
+            "id": "ID2345",
+            "name": "Charlie"
+        }
+    ],
+    "sortBy": "age",
+    "sortOrder": "asc"
+}
+
+
+
+### 2-1. Error Request : persons 리스트에 age가 범위를 벗어난 Person 객체가 있을 때
+POST http://localhost:8080/api/v1/persons/sort HTTP/1.1
+Content-Type: application/json
+
+{
+    "persons": [
+        {
+            "age": 25,
+            "height": 170,
+            "id": "ID1234",
+            "name": "Alice"
+        },
+        {
+            "age": 102,
+            "height": 180,
+            "id": "ID5678",
+            "name": "Bob"
+        },
+        {
+            "age": 20,
+            "height": 160,
+            "id": "ID2345",
+            "name": "Charlie"
+        }
+    ],
+    "sortBy": "age",
+    "sortOrder": "asc"
+}
+
+### 2-2. Error Request : sortOrder 값이 올바르지 않을 때
+
+POST http://localhost:8080/api/v1/persons/sort HTTP/1.1
+Content-Type: application/json
+
+{
+    "persons": [
+        {"age": 25, "height": 170, "id": "ID1234", "name": "Alice"},
+        {"age": 30, "height": 180, "id": "ID5678", "name": "Bob"},
+        {"age": 20, "height": 160, "id": "ID2345", "name": "Charlie"}
+    ],
+    "sortBy": "age",
+    "sortOrder": "invalid"
+}
+
+
