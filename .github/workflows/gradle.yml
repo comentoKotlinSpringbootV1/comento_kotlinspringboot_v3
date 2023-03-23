@@ -33,7 +33,7 @@ jobs:
       run: chmod +x gradlew
       
     - name: ktlint
-      uses: ScaCap/action-ktlint@master
+      uses: ScaCap/action-ktlint@1.5.1
       with:
         github_token: ${{ secrets.TOKEN }}
         reporter: github-pr-review
@@ -41,6 +41,5 @@ jobs:
         level: warning
     
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: build
+    - name: Build with Gradle
+      run: ./gradlew build
