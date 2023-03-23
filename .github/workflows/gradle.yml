@@ -41,5 +41,4 @@ jobs:
         level: warning
     
     - name: Build with Gradle
-    - name: Build with Gradle
       run: ./gradlew build
