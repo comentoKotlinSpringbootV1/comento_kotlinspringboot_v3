@@ -22,4 +22,34 @@ class PersonServiceImpl : PersonService {
 
         return if (sortOrder == SortOrder.des) sortedPersons.reversed() else sortedPersons
     }
+
+    override fun filterPersons(
+        persons: List<Person>,
+        ageCutoff: Int?,
+        heightCutoff: Int?,
+        except: List<String>?
+    ): List<Person> {
+
+        var filteredList = persons
+
+        if (!except.isNullOrEmpty()) {
+            except.forEach{
+                require(it.matches(Regex("^ID\\d{4}$")))
+            }
+
+            filteredList = filteredList.filterNot { person ->
+                except.contains(person.id)
+            }
+        }
+
+        if (ageCutoff != null) {
+            filteredList = filteredList.filter { it.age >= ageCutoff }
+        }
+
+        if (heightCutoff != null) {
+            filteredList = filteredList.filter { it.height >= heightCutoff }
+        }
+
+        return filteredList
+    }
 }

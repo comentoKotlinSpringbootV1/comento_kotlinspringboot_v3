@@ -1,6 +1,7 @@
 package com.comento.dbless.person.presentation
 
 import com.comento.dbless.person.domain.Person
+import com.comento.dbless.person.dto.FilterRequestDto
 import com.comento.dbless.person.dto.SortRequestDto
 import com.comento.dbless.person.service.PersonService
 import org.springframework.http.HttpStatus
@@ -23,6 +24,21 @@ class PersonController(
             personService.validatePersons(persons)
 
             return personService.sortPersons(persons, sortBy, sortOrder)
+        } catch (e: IllegalArgumentException) {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message)
+        }
+    }
+
+    @PostMapping("/filter")
+    fun filterPersons(@RequestBody filterRequestDto: FilterRequestDto): List<Person> {
+        try {
+            val (persons, ageCutoff, heightCutoff, except) = filterRequestDto
+
+            personService.validatePersons(persons)
+
+            return personService.filterPersons(
+                persons, ageCutoff, heightCutoff, except
+            )
         } catch (e: IllegalArgumentException) {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST, e.message)
         }
