@@ -1,0 +1,35 @@
+### 4-2 case 1: success
+PUT localhost:8080/api/v1/persons
+Content-Type: application/json
+
+[ {
+    "person_id" : 1,
+    "age" : 48,
+    "height" : 196,
+    "weight" : 144,
+    "name" : "예철민",
+    "gender" : "Female",
+    "is_married" : null,
+    "company" : "DAEWO",
+    "country" : "CHINA"
+}, {
+    "person_id" : 10,
+    "age" : 36,
+    "height" : 159,
+    "weight" : 162,
+    "name" : "예철민",
+    "gender" : null,
+    "is_married" : null,
+    "company" : "DAEWO",
+    "country" : "ENGLAND"
+}, {
+    "person_id" : 3,
+    "age" : 3,
+    "height" : 168,
+    "weight" : 192,
+    "name" : "탁은우",
+    "gender" : null,
+    "is_married" : null,
+    "company" : "SHELL",
+    "country" : "VIETNAM"
+} ]
