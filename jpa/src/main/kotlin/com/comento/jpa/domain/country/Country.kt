@@ -3,6 +3,7 @@ package com.comento.jpa.domain.country
 import au.com.console.kassava.kotlinEquals
 import au.com.console.kassava.kotlinHashCode
 import au.com.console.kassava.kotlinToString
+import java.io.Serializable
 import javax.persistence.*
 
 @Entity
@@ -11,7 +12,7 @@ class Country(
     zipCode: Long,
     name: String,
     capitalCity: String
-) {
+) : Serializable {
     @Id
     @Column(name = "zip_code")
     private var _zipCode: Long? = zipCode

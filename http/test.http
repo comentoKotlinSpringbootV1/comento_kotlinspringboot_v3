@@ -1,6 +1,12 @@
-### 01-case1: success
+### 01-case 1: success
 GET localhost:8080/api/v1/countries/japan/capital-city
 # Tokyo
 
 ### 01-case 2 : fail
 GET localhost:8080/api/v1/countries/spain/capital-city
+
+### 02-case 1: success
+GET localhost:8080/api/v1/companies/country/usa
+
+### 02-case 2 : fail
+GET localhost:8080/api/v1/companies/country/spain
