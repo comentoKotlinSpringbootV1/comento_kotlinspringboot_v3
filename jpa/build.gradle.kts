@@ -8,6 +8,13 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
     kotlin("plugin.jpa")
+    kotlin("plugin.allopen")
+    kotlin("plugin.noarg")
+}
+
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -16,6 +23,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.github.consoleau:kassava:2.1.0")
+    implementation("io.github.microutils:kotlin-logging:3.0.5")
 
     compileOnly("com.h2database:h2")
 
@@ -28,8 +37,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.kotest:kotest-runner-junit5:${KOTEST_VERSION}")
     testImplementation("io.kotest:kotest-assertions-core:${KOTEST_VERSION}")
-    testImplementation("io.mockk:mockk:1.13.0")
-    testImplementation("com.ninja-squad:springmockk:4.0.0")
+    testImplementation("io.mockk:mockk:1.13.4")
+    testImplementation("com.ninja-squad:springmockk:3.0.1")
     testRuntimeOnly("com.h2database:h2")
 }
 
@@ -44,3 +53,4 @@ tasks.getByName<Test>("test") {
         showStackTraces = true
     }
 }
+

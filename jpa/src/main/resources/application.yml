@@ -1,4 +1,8 @@
 spring:
+    jpa:
+        properties:
+            hibernate:
+                show_sql: true
     datasource:
         hikari:
             jdbc-url: jdbc:h2:mem:testdb
